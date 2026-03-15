@@ -6,22 +6,24 @@ reg clk;
 reg reset;
 
 cpu_top uut(
-    .clk(clk),
-    .reset(reset)
+.clk(clk),
+.reset(reset)
 );
 
-// clock generation
 always #5 clk = ~clk;
 
-initial begin
-    clk = 0;
-    reset = 1;
+initial
+begin
 
-    #20;
-    reset = 0;
+clk = 0;
+reset = 1;
 
-    #1000;
-    $finish;
+#10
+reset = 0;
+
+#500
+$finish;
+
 end
 
 endmodule
